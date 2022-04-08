@@ -4,8 +4,8 @@ import scipy.spatial.distance as ds
 from bs4 import BeautifulSoup
 from Vectorizer import Vectorizer
 
-target = 'гриб'
-url = 'https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%98%D0%BB%D1%8C%D0%B8%D1%87'
+target = 'грибы'
+url = 'https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA'
 
 MAX_LINKS = 300
 
@@ -105,13 +105,13 @@ while True:
 	if winCheck: break
 
 	if len(rates) == 0:
-		back()
+		back(1)
 		continue
 	
 	next_page = links[rates.index(min(rates))]
 
 	if min(rates) > 1:
-		back()
+		back(1)
 		continue
 
 	url = next_page.get('href')
