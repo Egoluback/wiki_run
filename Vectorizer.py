@@ -1,7 +1,6 @@
 import wget, zipfile, gensim
 
 import numpy as np
-import pandas as pd
 
 from functools import lru_cache
 from pymystem3 import Mystem
@@ -77,20 +76,6 @@ class Vectorizer:
   def Vectorize_one(self, text: str) -> np.array:
     self.mystem = Mystem()
     return self.tokenize_word2vec(text)
-
-  def Vectorize_corpus(self, dataset: pd.DataFrame) -> pd.DataFrame:
-    self.mystem = Mystem()
-    
-    vectorized = []
-
-    for object_index in range(len(dataset)):
-      if (object_index % 10000 == 0): print(f"Current progress: {object_index / len(dataset) * 100}%")
-      
-      vector = self.tokenize_word2vec(dataset.iloc[object_index])
-
-      vectorized.append(vector)
-    
-    return pd.DataFrame(list(vectorized))
 
 
 if __name__ == "__main__":
